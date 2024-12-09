@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "cardiac_cycle_game",
-    "slug": "cardiac_cycle_game",
+    "name": "BeatsAndFlows-App",
+    "slug": "BeatsAndFlows-App",
     "version": "1.0.0",
     "orientation": "landscape",
     "icon": "./assets/images/icon.png",
@@ -12,8 +12,9 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "beatsandflows.app",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#ffffff"
       }
     },
@@ -36,6 +37,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "09e702a9-4c51-49f2-a5d9-6c4c476de9d5"
+      }
     }
   }
 }
