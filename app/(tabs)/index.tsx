@@ -3,22 +3,37 @@ import { useRouter } from 'expo-router';
 import { View, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
 import * as ScreenOrientation from 'expo-screen-orientation';
 import { Audio } from 'expo-av';
-import { Link } from 'expo-router';  // Import Link from expo-router
-import { useFonts } from 'expo-font';
 
 export default function HomeScreen() {
   const router = useRouter(); // Use router for navigation
   const [sound, setSound] = useState<Audio.Sound | undefined>(undefined); // State for sound
 
-
-
   useEffect(() => {
     // Unlock orientation to allow flexibility
     ScreenOrientation.unlockAsync();
 
+    // Load and play background music
+    const playBackgroundMusic = async () => {
+      const { sound } = await Audio.Sound.createAsync(
+        require('@/assets/sounds/Music.mp3'), // Replace with your music file path
+        { shouldPlay: true, isLooping: true } // Automatically play and loop
+      );
+      setSound(sound);
+
+      // Set the volume to a lower level (e.g., 0.3)
+      await sound.setVolumeAsync(0.3);
+    };
+
+    playBackgroundMusic();
+
     return () => {
       // Lock the orientation back to portrait upon unmount
       ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP);
+      
+      // Unload the sound when the component unmounts
+      if (sound) {
+        sound.unloadAsync();
+      }
     };
   }, []);
 
@@ -27,7 +42,6 @@ export default function HomeScreen() {
     const { sound } = await Audio.Sound.createAsync(
       require('@/assets/sounds/Button.mp3') // Replace with your sound file path
     );
-    setSound(sound);
     await sound.playAsync();
   };
 
@@ -42,13 +56,10 @@ export default function HomeScreen() {
       style={styles.background}
     >
       <View style={styles.container}>
-        {/* <Link href="/guide"   style={styles.startButton}>
-            <Text style={styles.startButtonText} >Go to the Guide!</Text>
-        </Link> */}
-
         <TouchableOpacity style={styles.startButton} onPress={handleStartPress}>
           <Text style={styles.startButtonText}>START</Text>
         </TouchableOpacity>
+        
       </View>
     </ImageBackground>
   );

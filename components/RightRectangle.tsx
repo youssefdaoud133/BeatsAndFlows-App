@@ -1,41 +1,38 @@
+import { Audio } from 'expo-av';
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import * as Speech from 'expo-speech';
-import { Platform } from 'react-native';
 
 const RightRectangle = ({ title, paragraph, onNextButtonClick, onBackButtonClick }: any) => {
-  const [displayedText, setDisplayedText] = useState('');
   const [isTextComplete, setIsTextComplete] = useState(false);
+  const [sound, setSound] = useState<Audio.Sound | undefined>(undefined); // State for sound
 
   useEffect(() => {
-    setDisplayedText(''); // Reset text every time screen is opened
-    setIsTextComplete(false); // Disable the button until text is complete
-    let voice;
-
-    if (Platform.OS === 'ios') {
-      voice = 'com.apple.speech.synthesis.voice.Alex';
-    } else if (Platform.OS === 'android') {
-      voice = 'en-us';
-    }
-
-    // Optional: Uncomment to enable text-to-speech
-    Speech.speak(paragraph, {
-      voice: voice,
-      rate: 1.2,
-    });
-
-    let index = 0;
-    const interval = setInterval(() => {
-      setDisplayedText((prev) => prev + paragraph[index]);
-      index += 1;
-      if (index === paragraph.length - 1) {
-        clearInterval(interval);
-        setIsTextComplete(true); // Enable the button when text is fully displayed
-      }
-    }, 45);
-
-    return () => clearInterval(interval); // Clean up interval on component unmount
+    setIsTextComplete(true); // Enable the button immediately
   }, [paragraph]);
+
+
+
+  const getRandomColor = () => {
+    const randomColor = `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(
+      Math.random() * 256
+    )}, ${Math.floor(Math.random() * 256)}, 0.2)`; // Low opacity
+    return randomColor;
+  };
+
+  const renderParagraphs = () => {
+    if (Array.isArray(paragraph)) {
+      return paragraph.map((para, index) => (
+        <View key={index} style={[styles.paragraphContainer, { backgroundColor: getRandomColor() }]}>
+          <Text style={styles.paragraphText}>{para}</Text>
+        </View>
+      ));
+    }
+    return (
+      <View >
+        <Text style={styles.paragraphText}>{paragraph}</Text>
+      </View>
+    );
+  };
 
   return (
     <View style={styles.rightRectangle}>
@@ -43,24 +40,21 @@ const RightRectangle = ({ title, paragraph, onNextButtonClick, onBackButtonClick
         <Text style={styles.text}>{title}</Text> {/* Dynamic title */}
       </View>
 
-      <ScrollView style={styles.middleRightSection}>
-        <Text style={styles.paragraphText}>{displayedText}</Text>
-      </ScrollView>
+      <ScrollView style={styles.middleRightSection}>{renderParagraphs()}</ScrollView>
 
       <View style={styles.bottomSection}>
         <View style={styles.buttonContainer}>
-        <TouchableOpacity
+          <TouchableOpacity
             style={[
               styles.nextButton,
-              { backgroundColor: isTextComplete ? '#fff8ed' : '#d3d3d3' }, // Change color based on state
+              { backgroundColor: isTextComplete ? '#fff8ed' : '#d3d3d3' },
             ]}
             onPress={onBackButtonClick}
-            disabled={!isTextComplete} // Disable the button until text is complete
           >
             <Text
               style={[
                 styles.nextButtonText,
-                { color: isTextComplete ? '#B23B4B' : '#888888' }, // Adjust text color for disabled state
+                { color: isTextComplete ? '#B23B4B' : '#888888' },
               ]}
             >
               Back
@@ -69,22 +63,19 @@ const RightRectangle = ({ title, paragraph, onNextButtonClick, onBackButtonClick
           <TouchableOpacity
             style={[
               styles.nextButton,
-              { backgroundColor: isTextComplete ? '#fff8ed' : '#d3d3d3' }, // Change color based on state
+              { backgroundColor: isTextComplete ? '#fff8ed' : '#d3d3d3' },
             ]}
             onPress={onNextButtonClick}
-            disabled={!isTextComplete} // Disable the button until text is complete
           >
             <Text
               style={[
                 styles.nextButtonText,
-                { color: isTextComplete ? '#B23B4B' : '#888888' }, // Adjust text color for disabled state
+                { color: isTextComplete ? '#B23B4B' : '#888888' },
               ]}
             >
               Next
             </Text>
           </TouchableOpacity>
-
-          
         </View>
       </View>
     </View>
@@ -107,14 +98,20 @@ const styles = StyleSheet.create({
   middleRightSection: {
     padding: 4,
     height: '60%',
-    width: '100%', // Make sure ScrollView takes full width
+    width: '100%',
+  },
+  paragraphContainer: {
+    marginBottom: 10,
+    padding: 10,
+    borderRadius: 8,
+    elevation: 1, // Shadow for individual paragraphs
   },
   paragraphText: {
     fontSize: 14,
     color: '#000',
     fontFamily: 'Comic',
     textAlign: 'left',
-    lineHeight: 15,
+    lineHeight: 18,
   },
   text: {
     fontSize: 18,
@@ -135,7 +132,7 @@ const styles = StyleSheet.create({
     paddingVertical: 9,
     paddingHorizontal: 20,
     borderRadius: 10,
-    elevation: 3, // Adding shadow for better look
+    elevation: 3,
     margin: 5,
   },
   nextButtonText: {
