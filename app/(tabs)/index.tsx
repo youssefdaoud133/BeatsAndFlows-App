@@ -47,7 +47,7 @@ export default function HomeScreen() {
 
   const handleStartPress = async () => {
     await playSound(); // Play sound before navigation
-    router.push('/guide'); // Navigate to the Guide tab
+    router.push('/menu'); // Navigate to the Guide tab
   };
 
   return (
