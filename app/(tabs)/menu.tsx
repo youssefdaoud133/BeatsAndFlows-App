@@ -26,7 +26,7 @@ export default function TabTwoScreen() {
   const buttons = [
     { name: 'Learn Cardiac cycle', onPress: () => {router.push('/guide')} },
     { name: 'Play With Cardiac', onPress: () => {router.push('/PWC')}  },
-    { name: 'Visualize Your ECG', onPress: () => alert('Button 3 pressed') },
+    { name: 'Visualize Your ECG', onPress: () =>{router.push('/visualize')} },
     // { name: 'Button 4', onPress: () => alert('Button 4 pressed') },
   ];
 
