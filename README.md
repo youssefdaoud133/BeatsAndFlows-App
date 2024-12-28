@@ -1,6 +1,6 @@
 <div align="center">    
   <h1>Beats and Flow</h1>
-  <img src="./assets/images/icon.png" alt="App Logo" width="200">
+  <img src="./assets/images/icon.png" alt="App Logo" width="400">
 </div>
 
 ---
