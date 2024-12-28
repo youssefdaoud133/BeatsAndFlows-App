@@ -50,10 +50,10 @@ This application is designed as an interactive educational tool to help users un
 - **ECG Input**: Accepts ECG waveforms as input, allowing users to explore the correlation between ECG patterns and heart activity.
 
   <div align="center">
-    <img src="./assets/images/ECG.gif" alt="Game Preview" width="400">
+    <img src="./assets/images/ECG.gif" alt="Game Preview" width="600">
   </div>
   <div align="center">
-    <img src="./assets/images/ECG2.gif" alt="Game Preview" width="400">
+    <img src="./assets/images/ECG2.gif" alt="Game Preview" width="600">
   </div>
 
 - **Visualization Tools**: Animates heartbeats based on ECG input to illustrate the cardiac cycle phases dynamically.
@@ -64,7 +64,7 @@ This application is designed as an interactive educational tool to help users un
 
 - **Interactive Game**: A game designed to help users understand the phases of the cardiac cycle through fun and engaging activities.
   <div align="center">
-    <img src="./assets/images/Game_Gif.gif" alt="Game Preview" width="400">
+    <img src="./assets/images/Game_Gif.gif" alt="Game Preview" width="600">
   </div>
 - **Educational Value**: Provides a focused understanding of heart rhythms, cardiac functions, and their visual representation through ECG.
 
