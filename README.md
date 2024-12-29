@@ -12,7 +12,7 @@ This application is designed as an interactive educational tool to help users un
 - [Download the App](https://drive.google.com/file/d/1YWdF7Sg8_z1YSCmvSieP9UeU3xn5ix9b/view?usp=sharing)
 - [Watch Video Demo](https://youtu.be/IHud7nQ8U0A?si=-sNqB_jfBzN0eTAo)
 
-> **Note:** This project was developed as part of the Anatomy Course (SBES 2120) at Cairo University's Faculty of Engineering.
+> **Note:** This project was developed as part of the Anatomy Course (SBE 2120) at Cairo University's Faculty of Engineering.
 
 ---
 
