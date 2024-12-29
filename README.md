@@ -23,7 +23,7 @@ This application is designed as an interactive educational tool to help users un
   <img src="./assets/images/Aliaa2.jpeg.jpg" alt="Professor Portrait" width="200">
 </div>
 
-✨ It was a Tuesday at 12 PM when our anatomy lecture began, led by the incredible professor who always inspired us to think creatively and transform theoretical science into practical, impactful projects. I consider myself fortunate to learn anatomy under such a visionary teacher.
+✨ It was a Monday at 12 PM when our anatomy lecture began, led by the incredible professor who always inspired us to think creatively and transform theoretical science into practical, impactful projects. I consider myself fortunate to learn anatomy under such a visionary teacher.
 
 📚 That day, the professor delved into the cardiac cycle, explaining how ECG patterns relate to the cycle, action potentials, and their influence on the ECG output. It was fascinating to see the intricate relationship between physiology and technology unfold before our eyes.
 
